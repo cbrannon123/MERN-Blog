@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser')
 const logger = require('morgan');
 const cors = require('cors');
@@ -8,8 +9,8 @@ const cors = require('cors');
 require("dotenv").config();
 require('./config/database');
 
-const apiRouter = require('./routes/api')
-const usersRouter = require('./routes/users')
+const apiRouter = require('./routes/api/api')
+const usersRouter = require('./routes/api/users')
 
 const app = express();
 
@@ -23,12 +24,11 @@ app.use(cookieParser());
 
 // Configure both serve-favicon & static middlewares
 // to serve from the production 'build' folder
- //app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-//MIGHT NOT WORK!
 app.use('/api', apiRouter);
-app.use('/users', usersRouter)
+app.use('/api/users', usersRouter)
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

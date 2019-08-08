@@ -12,63 +12,64 @@ import userService from '../../utils/userService';
 
 
 class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			user: userService.getUser()
-		}
-	}
+    constructor() {
+        super();
+        this.state = {
+            user: userService.getUser()
+        }
+    }
 
-	handleSignupOrLogin = () => {
-		this.setState({ user: userService.getUser() });
-	};
+    handleSignupOrLogin = () => {
+        this.setState({ user: userService.getUser() });
+        console.log(this.state.user);
+    };
 
-	handleLogOut = () => {
-		console.log("handlelogout called");
-		userService.logout();
-		console.log("logged out");
-		this.setState({ user: null });
-		console.log(this.state.user);
-	};
+    handleLogOut = () => {
+        userService.logout();
+        this.setState({ user: null });
+        console.log(this.state.user);
+    };
 
-	render() {
-		return (
-			<div>
-				<div>
-					<NavBar
-						user={this.state.user}
-						handleLogOut={this.handleLogOut}
-					/>
-				</div>
-				<Switch>
+    render() {
+        return (
+            <div>
+                <div>
+                    <NavBar
+                        user={this.state.user}
+                        handleLogOut={this.handleLogOut}
+                    />
+                </div>
+                <Switch>
+                    <Route
+                        exact
+                        path="/signup"
+                        render={props => (
+                            <SignUpPage
+                                {...props}
+                                handleSignupOrLogin={this.handleSignupOrLogin}
+                            />
+                        )}
+                    />
 
-					<Route
-						exact
-						path="/signup"
-						render={props => (
-							<SignUpPage
-								{...props}
-								handleSignupOrLogin={this.handleSignupOrLogin}
-							/>
-						)}
-					/>
-
-					<Route
-						exact
-						path="/login"
-						render={props => (
-							<LoginPage
-								{...props}
-								handleSignupOrLogin={this.handleSignupOrLogin}
-							/>
-						)}
-					/>
-					<Route exact path='/create' component={ Create } />
-
-				</Switch>
-			</div>
-		);
-	}
+                    <Route
+                        exact
+                        path="/login"
+                        render={props => (
+                            <LoginPage
+                                {...props}
+                                handleSignupOrLogin={this.handleSignupOrLogin}
+                            />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path='/create'
+                        component={Create}
+                    />
+                </Switch>
+            </div>
+        );
+    }
 }
 
 
