@@ -1,3 +1,5 @@
+import tokenService from "../utils/tokenService";
+
 export function createPost(post) {
     return fetch('/api/posts', {
        method: 'POST',

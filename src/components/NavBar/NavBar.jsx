@@ -4,9 +4,9 @@ import './NavBar.css';
 
 const NavBar = (props) => {
     let nav = props.user ?
-        <div>
+    <div>
             &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to='' onClick={props.handleLogout}>LOG OUT</Link>
+      <Link to='' onClick={props.handleLogOut}>LOG OUT</Link>
             &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             <Link to='/create'>Create</Link>
       <span>WELCOME, {props.user.name}</span>
@@ -15,7 +15,7 @@ const NavBar = (props) => {
         <div>
             <Link to='/login'>LOG IN</Link>
             &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/signup' >SIGN UP</Link>
+             <Link to='/signup' >SIGN UP</Link>
         </div>;
 
     return (
