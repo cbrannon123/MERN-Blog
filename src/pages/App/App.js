@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SignUpPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage'
-import Index from '../IndexPage/IndexPage';
-import Create from '../CreatePage/CreatePage';
-import Edit from '../EditPage/EditPage';
-import Show from '../ShowPage/ShowPage';
-import NavBar from '../../components/NavBar/NavBar'
+import IndexPage from '../../pages/IndexPage/IndexPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import userService from '../../utils/userService';
 
@@ -33,24 +29,20 @@ class App extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <NavBar
-                        user={this.state.user}
-                        handleLogOut={this.handleLogOut}
-                    />
-                </div>
                 <Switch>
-                    <Route
-                        exact
-                        path="/signup"
-                        render={props => (
+                    <Route exact path='/' render={() =>
+                        <IndexPage
+                            user={this.state.user}
+                            handleLogOut={this.handleLogOut}
+                        />
+                    }/>
+                    <Route exact path="/signup" render={props => (
                             <SignUpPage
                                 {...props}
                                 handleSignupOrLogin={this.handleSignupOrLogin}
                             />
                         )}
                     />
-
                     <Route
                         exact
                         path="/login"
@@ -60,11 +52,6 @@ class App extends Component {
                                 handleSignupOrLogin={this.handleSignupOrLogin}
                             />
                         )}
-                    />
-                    <Route
-                        exact
-                        path='/create'
-                        component={Create}
                     />
                 </Switch>
             </div>

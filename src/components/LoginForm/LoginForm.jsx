@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService'
+import './LoginForm.css'
 
 class LoginForm extends Component {
     state = {
@@ -36,8 +37,8 @@ class LoginForm extends Component {
 
     render() {
         return (
-          <div >
-            <header>Log In</header>
+          <div className="LoginForm-box" >
+            <p>Log In</p>
             <form  onSubmit={this.handleSubmit} >
               <div>
                 <div >
