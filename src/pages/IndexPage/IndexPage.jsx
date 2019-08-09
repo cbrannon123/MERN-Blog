@@ -1,20 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar'
+import { getPosts } from '../../services/api'
 import './IndexPage.css'
 
-const IndexPage = (props) => {
-    return (
-        <div>
-            <NavBar
-                user={props.user}
-                handleLogOut={props.handleLogOut}
-            />
-        </div>
-    );
-};
 
+class IndexPage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            posts: []
+        }
+    }
 
+    componentWillMount() {
+        getPosts().then((json) => {
+            this.setState({ posts: json })
+        })
+    }
+
+    render() {
+
+        var posts = this.state.posts.map((post, idx) => {
+
+            return(
+                <li key={ idx }>
+                    <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                    
+                </li>
+            )
+        });
+        return (
+            <div>
+                <NavBar
+                    user={this.props.user}
+                    handleLogOut={this.props.handleLogOut}
+                />
+                <h2>Blog App</h2>
+                <hr/>
+                <br/>
+
+                <ul>
+                    { posts }
+                </ul>
+            </div>
+        );
+    }
+
+}
 
 
 

@@ -4,6 +4,7 @@ const postsCtrl = require('../../controllers/posts');
 
 
 /*------------------- Public Routes -------------*/ 
+router.get('/posts', postsCtrl.getAllPosts);
 
 
 
