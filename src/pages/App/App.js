@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import SignUpPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage'
-import IndexPage from '../../pages/IndexPage/IndexPage';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import IndexPage from '../IndexPage/IndexPage';
+import { Route, Switch } from 'react-router-dom';
 import userService from '../../utils/userService';
+import CreatePage from '../CreatePage/CreatePage';
 
 
 class App extends Component {
@@ -34,6 +35,11 @@ class App extends Component {
                         <IndexPage
                             user={this.state.user}
                             handleLogOut={this.handleLogOut}
+                        />
+                    }/>
+                    <Route exact path='/create' render={({ history }) => 
+                        <CreatePage 
+                            history={history}
                         />
                     }/>
                     <Route exact path="/signup" render={props => (

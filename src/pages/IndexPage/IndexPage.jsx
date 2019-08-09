@@ -36,7 +36,7 @@ class IndexPage extends Component {
                     user={this.props.user}
                     handleLogOut={this.props.handleLogOut}
                 />
-                <h2>Blog App</h2>
+                <h2>Blog App {<Link to={'/create/'}>Create</Link>}</h2>
                 <hr/>
                 <br/>
 
