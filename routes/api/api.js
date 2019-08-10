@@ -5,9 +5,10 @@ const postsCtrl = require('../../controllers/posts');
 
 /*------------------- Public Routes -------------*/ 
 router.get('/posts', postsCtrl.getAllPosts);
-router.get('/posts/:id', postsCtrl.getOnePost)
+router.get('/posts/:id', postsCtrl.getOnePost);
 router.post('/posts', postsCtrl.createPost);
-router.delete('/posts/:id', postsCtrl.deletePost)
+router.delete('/posts/:id', postsCtrl.deletePost);
+router.put('/posts/:id', postsCtrl.updatePost);
 
 
 

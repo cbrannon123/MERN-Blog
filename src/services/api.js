@@ -26,6 +26,19 @@ export function createPost(post) {
     })
 }
 
+export function editPost(post) {
+    return fetch(`/api/posts/${post.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            title: post.title,
+            body: post.body
+        }),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+}
+
 export function deletePost(id) {
     return fetch(`/api/posts/${id}`, {
         method: 'delete'

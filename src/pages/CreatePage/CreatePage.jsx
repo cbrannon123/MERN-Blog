@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { createPost } from '../../services/api';
 
 class CreatePage extends Component {
@@ -40,6 +41,7 @@ class CreatePage extends Component {
                     <textarea onChange={this.handleBody} name='body' value={this.state.body}></textarea>
                     <br/>
                     <input type="submit" value="Submit Post"/>
+                    <Link to='/'>Back</Link>
                 </form>
             </div>
         )

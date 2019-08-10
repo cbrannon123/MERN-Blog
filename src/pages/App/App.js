@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import userService from '../../utils/userService';
 import CreatePage from '../CreatePage/CreatePage';
 import ShowPage from '../ShowPage/ShowPage';
+import EditPage from '../EditPage/EditPage';
 
 
 class App extends Component {
@@ -45,6 +46,12 @@ class App extends Component {
                     } />
                     <Route exact path='/posts/:id' render={({ history, ...props}) =>
                         <ShowPage
+                            {...props}
+                            history={history}
+                        />
+                    } />
+                    <Route exact path='/posts/:id/edit' render={({ history, ...props}) =>
+                        <EditPage
                             {...props}
                             history={history}
                         />

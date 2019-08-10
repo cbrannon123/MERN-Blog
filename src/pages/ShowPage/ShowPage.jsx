@@ -27,7 +27,6 @@ class ShowPage extends Component {
   }
 
   handleDelete= (id) => {
-      console.log('>>>>>>>>>>>>>handleDelet')
       deletePost(id).then(() => {
         this.props.history.goBack();
       } )
@@ -41,6 +40,7 @@ class ShowPage extends Component {
                <br/>
                <p>{this.state.body}</p>
                <button onClick={() => this.handleDelete(this.state.id)}>Delete</button>
+               <Link to={`/posts/${this.state.id}/edit`}>Edit</Link>
                <Link to='/'>Back</Link>
            </div>
        )
