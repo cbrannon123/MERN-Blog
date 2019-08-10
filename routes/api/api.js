@@ -9,6 +9,8 @@ router.get('/posts/:id', postsCtrl.getOnePost);
 router.post('/posts', postsCtrl.createPost);
 router.delete('/posts/:id', postsCtrl.deletePost);
 router.put('/posts/:id', postsCtrl.updatePost);
+router.put('/posts/:id/upvote', postsCtrl.upvotePost);
+router.put('/posts/:id/downvote', postsCtrl.downvotePost);
 
 
 
@@ -19,7 +21,6 @@ router.use(require('../../config/auth'))
 /*---------------- helper function ------------*/
 function checkAuth(req, res, next) {
     if (req.user) return next();
-    console.log('heelo from auth')
     return res.status(401).json({msg: 'Not Authorized'});
   }
 

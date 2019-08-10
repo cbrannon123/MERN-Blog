@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar'
-import { getPosts } from '../../services/api'
+import { getPosts, upvotePost } from '../../services/api'
 import './IndexPage.css'
 
 
@@ -13,9 +13,17 @@ class IndexPage extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         getPosts().then((json) => {
             this.setState({ posts: json })
+        })
+    }
+
+    handleUpvote = (id, type) => {
+        upvotePost(id, type).then((json) => {
+            getPosts().then((posts) => {
+                this.setState({ posts: posts })
+            })
         })
     }
 
@@ -23,9 +31,14 @@ class IndexPage extends Component {
 
         var posts = this.state.posts.map((post, idx) => {
 
-            return(
-                <li key={ idx }>
-                    <Link to={`/posts/${post._id}`}>{post.title}</Link>
+            return (
+                <li key={idx}>
+                    <Link to={`/posts/${post._id}`}>{post.title}</Link>  <span>votes: {post.upvotes}</span>
+                    <br />
+                    
+                    <br />
+                    <br />
+                    
                     
                 </li>
             )
@@ -37,11 +50,11 @@ class IndexPage extends Component {
                     handleLogOut={this.props.handleLogOut}
                 />
                 <h2>Blog App {<Link to={'/create/'}>Create</Link>}</h2>
-                <hr/>
-                <br/>
+                <hr />
+                <br />
 
                 <ul>
-                    { posts }
+                    {posts}
                 </ul>
             </div>
         );

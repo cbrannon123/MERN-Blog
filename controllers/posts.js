@@ -6,6 +6,8 @@ module.exports = {
     getOnePost,
     deletePost,
     updatePost,
+    upvotePost,
+    downvotePost,
 
 };
 
@@ -36,5 +38,23 @@ function updatePost(req, res) {
 function deletePost(req, res) {
     Post.findByIdAndRemove(req.params.id).then(function (post) {
         res.status(200).json(post);
+    })
+}
+
+function upvotePost(req, res) {
+    Post.findById(req.params.id).then((post) => {
+        post.upvotes += 1;
+        post.save((post) => {
+            res.status(200).json(post)
+        })
+    })
+}
+
+function downvotePost(req, res) {
+    Post.findById(req.params.id).then((post) => {
+        post.upvotes -= 1;
+        post.save((post) => {
+            res.status(200).json(post)
+        })
     })
 }

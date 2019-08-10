@@ -46,3 +46,17 @@ export function deletePost(id) {
         return res.json()
     });
 }
+
+//up and down votes
+export function upvotePost(id, type) {
+    var type = type === 'downvote' ? 'downvote' : 'upvote';
+    return fetch(`/api/posts/${id}/${type}`,{
+        method: 'PUT',
+        body: JSON.stringify({
+            upvotes: 1
+        }),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+}
