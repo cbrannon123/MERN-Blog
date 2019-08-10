@@ -7,10 +7,10 @@ export function getPosts() {
 }
 
 export function getPost(id) {
-    return fetch(`/api/posts/${id}`).then(function(res) {
-      return res.json();
+    return fetch(`/api/posts/${id}`).then(function (res) {
+        return res.json();
     })
-  }
+}
 
 
 export function createPost(post) {
@@ -42,7 +42,7 @@ export function editPost(post) {
 export function deletePost(id) {
     return fetch(`/api/posts/${id}`, {
         method: 'delete'
-    }).then(function(res) {
+    }).then(function (res) {
         return res.json()
     });
 }
@@ -50,10 +50,22 @@ export function deletePost(id) {
 //up and down votes
 export function upvotePost(id, type) {
     var type = type === 'downvote' ? 'downvote' : 'upvote';
-    return fetch(`/api/posts/${id}/${type}`,{
+    return fetch(`/api/posts/${id}/${type}`, {
         method: 'PUT',
         body: JSON.stringify({
             upvotes: 1
+        }),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+}
+
+export function addComment(postId, comment) {
+    return fetch(`/api/posts/${postId}/comments`, {
+        method: 'POST',
+        body: JSON.stringify({
+            body: comment
         }),
         headers: {
             'content-type': 'application/json'
