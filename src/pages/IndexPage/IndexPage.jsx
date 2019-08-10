@@ -25,7 +25,7 @@ class IndexPage extends Component {
 
             return(
                 <li key={ idx }>
-                    <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                    <Link to={`/posts/${post._id}`}>{post.title}</Link>
                     
                 </li>
             )

@@ -6,6 +6,7 @@ import IndexPage from '../IndexPage/IndexPage';
 import { Route, Switch } from 'react-router-dom';
 import userService from '../../utils/userService';
 import CreatePage from '../CreatePage/CreatePage';
+import ShowPage from '../ShowPage/ShowPage';
 
 
 class App extends Component {
@@ -36,18 +37,23 @@ class App extends Component {
                             user={this.state.user}
                             handleLogOut={this.handleLogOut}
                         />
-                    }/>
-                    <Route exact path='/create' render={({ history }) => 
-                        <CreatePage 
+                    } />
+                        <Route exact path='/posts/:id' render={ (props) => 
+                            <ShowPage
+                                {...props}
+                            />
+                        } />
+                    <Route exact path='/create' render={({ history }) =>
+                        <CreatePage
                             history={history}
                         />
-                    }/>
+                    } />
                     <Route exact path="/signup" render={props => (
-                            <SignUpPage
-                                {...props}
-                                handleSignupOrLogin={this.handleSignupOrLogin}
-                            />
-                        )}
+                        <SignUpPage
+                            {...props}
+                            handleSignupOrLogin={this.handleSignupOrLogin}
+                        />
+                    )}
                     />
                     <Route
                         exact

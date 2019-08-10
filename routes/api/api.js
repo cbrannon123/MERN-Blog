@@ -5,8 +5,9 @@ const postsCtrl = require('../../controllers/posts');
 
 /*------------------- Public Routes -------------*/ 
 router.get('/posts', postsCtrl.getAllPosts);
-
+router.get('/posts/:id', postsCtrl.getOnePost)
 router.post('/posts', postsCtrl.createPost);
+
 
 
 /*------------------- Protected Routes -------------*/ 
