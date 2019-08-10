@@ -38,13 +38,14 @@ class App extends Component {
                             handleLogOut={this.handleLogOut}
                         />
                     } />
-                        <Route exact path='/posts/:id' render={ (props) => 
-                            <ShowPage
-                                {...props}
-                            />
-                        } />
                     <Route exact path='/create' render={({ history }) =>
                         <CreatePage
+                            history={history}
+                        />
+                    } />
+                    <Route exact path='/posts/:id' render={({ history, ...props}) =>
+                        <ShowPage
+                            {...props}
                             history={history}
                         />
                     } />

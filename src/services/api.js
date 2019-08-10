@@ -25,3 +25,11 @@ export function createPost(post) {
         }
     })
 }
+
+export function deletePost(id) {
+    return fetch(`/api/posts/${id}`, {
+        method: 'delete'
+    }).then(function(res) {
+        return res.json()
+    });
+}

@@ -3,7 +3,8 @@ const Post = require('../models/Post');
 module.exports = {
     getAllPosts,
     createPost,
-    getOnePost
+    getOnePost,
+    deletePost,
 };
 
 function getAllPosts(req, res) {
@@ -22,4 +23,10 @@ function getOnePost(req, res) {
     Post.findById(req.params.id).then(function(post) {
       res.status(200).json(post);
     });
+  }
+
+  function deletePost(req, res) {
+    Post.findByIdAndRemove(req.params.id).then(function(post){
+        res.status(200).json(post);
+    })
   }
