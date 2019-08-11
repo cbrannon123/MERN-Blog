@@ -3,7 +3,7 @@ import './App.css';
 import SignUpPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage'
 import IndexPage from '../IndexPage/IndexPage';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import userService from '../../utils/userService';
 import CreatePage from '../CreatePage/CreatePage';
 import ShowPage from '../ShowPage/ShowPage';
@@ -40,9 +40,12 @@ class App extends Component {
                         />
                     } />
                     <Route exact path='/create' render={({ history }) =>
+                        userService.getUser() ?
                         <CreatePage
                             history={history}
                         />
+                        :
+                        <Redirect to={'/login'} />
                     } />
                     <Route exact path='/posts/:id' render={({ history, ...props}) =>
                         <ShowPage
@@ -51,10 +54,13 @@ class App extends Component {
                         />
                     } />
                     <Route exact path='/posts/:id/edit' render={({ history, ...props}) =>
+                        userService.getUser() ?
                         <EditPage
                             {...props}
                             history={history}
                         />
+                        :
+                        <Redirect to={'/login'} />
                     } />
                     <Route exact path="/signup" render={props => (
                         <SignUpPage

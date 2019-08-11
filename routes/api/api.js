@@ -1,23 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const postsCtrl = require('../../controllers/posts');
+var usersCtrl = require('../../controllers/users');
 
 
 /*------------------- Public Routes -------------*/ 
 router.get('/posts', postsCtrl.getAllPosts);
 router.get('/posts/:id', postsCtrl.getOnePost);
-router.post('/posts', postsCtrl.createPost);
 router.delete('/posts/:id', postsCtrl.deletePost);
-router.put('/posts/:id', postsCtrl.updatePost);
 router.put('/posts/:id/upvote', postsCtrl.upvotePost);
 router.put('/posts/:id/downvote', postsCtrl.downvotePost);
 router.post('/posts/:id/comments', postsCtrl.addComment)
+router.post('/posts', postsCtrl.createPost);
 
 
 
 
 /*------------------- Protected Routes -------------*/ 
 router.use(require('../../config/auth'))
+router.put('/posts/:id', checkAuth, postsCtrl.updatePost);
 
 
 /*---------------- helper function ------------*/
