@@ -12,13 +12,13 @@ router.put('/posts/:id/upvote', postsCtrl.upvotePost);
 router.put('/posts/:id/downvote', postsCtrl.downvotePost);
 router.post('/posts/:id/comments', postsCtrl.addComment)
 router.post('/posts', postsCtrl.createPost);
+router.put('/posts/:id', checkAuth, postsCtrl.updatePost);
 
 
 
 
 /*------------------- Protected Routes -------------*/ 
 router.use(require('../../config/auth'))
-router.put('/posts/:id', checkAuth, postsCtrl.updatePost);
 
 
 /*---------------- helper function ------------*/
