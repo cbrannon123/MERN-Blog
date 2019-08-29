@@ -53,9 +53,9 @@ class IndexPage extends Component {
                 <hr />
                 <br />
 
-                <ul>
+                <ol>
                     {posts}
-                </ul>
+                </ol>
             </div>
         );
     }
