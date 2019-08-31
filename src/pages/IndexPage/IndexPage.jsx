@@ -35,11 +35,8 @@ class IndexPage extends Component {
                 <li key={idx}>
                     <Link to={`/posts/${post._id}`}>{post.title}</Link>  <span>votes: {post.upvotes}</span>
                     <br />
-                    
                     <br />
                     <br />
-                    
-                    
                 </li>
             )
         });
@@ -49,13 +46,14 @@ class IndexPage extends Component {
                     user={this.props.user}
                     handleLogOut={this.props.handleLogOut}
                 />
-                <h2>Blog App {<Link to={'/create/'}>Create</Link>}</h2>
+                <div>
+                <h2 style={{marginLeft: '10px'}}>{<Link style={{textDecoration: 'none', fontSize:'20px', border:'1px solid black', padding: '5px', background: 'lightGrey', color: "#ff6600", boxShadow: '6px 5px #888888'}} to={'/create/'}>Create Post</Link>}</h2>
                 <hr />
                 <br />
-
                 <ol>
                     {posts}
                 </ol>
+                </div>
             </div>
         );
     }
