@@ -1,4 +1,16 @@
 .indexPage {
     text-align: left;
-    
+
+}
+
+.indexLink { 
+    text-decoration: none;
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    background: grey;
+    color: #ff6600;
+    box-shadow: 2px 3px gray;
+    border-radius: 10%;
+
 }
