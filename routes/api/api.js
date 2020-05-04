@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const postsCtrl = require('../../controllers/posts');
-var usersCtrl = require('../../controllers/users');
 
 
 /*------------------- Public Routes -------------*/ 

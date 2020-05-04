@@ -41,30 +41,30 @@ class SignupForm extends Component {
     return (
       <div>
         <header >Sign Up</header>
-        <form  onSubmit={this.handleSubmit} >
-          <div> 
+        <form onSubmit={this.handleSubmit} >
+          <div>
             <div>
-              <input type="text"  placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
+              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
             </div>
           </div>
           <div >
             <div >
-              <input type="email"  placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+              <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
             </div>
           </div>
           <div >
             <div >
-              <input type="password"  placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
+              <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange} />
             </div>
           </div>
           <div >
             <div >
-              <input type="password"  placeholder="Confirm Password" value={this.state.passwordConf} name="passwordConf" onChange={this.handleChange} />
+              <input type="password" placeholder="Confirm Password" value={this.state.passwordConf} name="passwordConf" onChange={this.handleChange} />
             </div>
           </div>
           <div >
             <div >
-              <button  disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
+              <button disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
               <Link to='/'>Cancel</Link>
             </div>
           </div>
